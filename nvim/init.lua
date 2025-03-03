@@ -14,7 +14,7 @@ vim.o.cursorline = true     -- カーソル行のハイライト
 
 vim.g.mapleader = " "  -- leader キーをスペースに設定
 local opts = { noremap = true, silent = true }
--- 例: NvimTree（ファイルエクスプローラー）のトグル
+
 vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>p", ":Telescope find_files<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>lg", ":Telescope live_grep<CR>", { noremap = true, silent = true })
@@ -28,7 +28,7 @@ require('packer').startup(function(use)
    -- ファイルエクスプローラー
   use 'kyazdani42/nvim-tree.lua'
 
-  -- カラースキーム（例: gruvbox）
+  -- カラースキーム
   use 'gruvbox-community/gruvbox'
 
     -- Telescope（ファジーファインダー）
@@ -37,7 +37,7 @@ require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-    -- Treesitter（構文解析による強調表示など）
+  -- Treesitter（構文解析による強調表示など）
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
@@ -51,8 +51,10 @@ require('packer').startup(function(use)
   -- ステータスライン（lualine）
   use 'hoob3rt/lualine.nvim'
 
+  -- lsp関連で入れたやつ
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
+
   use 'github/copilot.vim'
 end)
 
@@ -71,11 +73,11 @@ lspconfig.solargraph.setup {
 
 -- Treesitter 設定（Ruby含む）
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"ruby"}, -- 他にも使いたい言語を追加
+  ensure_installed = {"ruby"},
   highlight = { enable = true }
 }
 
--- 補完エンジン nvim-cmp の設定例（LSP 連携）
+-- 補完エンジン nvim-cmp の設定（LSP 連携）
 local cmp = require'cmp'
 cmp.setup({
   snippet = {
