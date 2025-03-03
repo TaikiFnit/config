@@ -53,6 +53,7 @@ require('packer').startup(function(use)
 
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
+  use 'github/copilot.vim'
 end)
 
 -- Ruby 用 LSP（Solargraph）の設定
