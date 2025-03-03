@@ -16,6 +16,7 @@ vim.g.mapleader = " "  -- leader キーをスペースに設定
 local opts = { noremap = true, silent = true }
 -- 例: NvimTree（ファイルエクスプローラー）のトグル
 vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>o", ":Telescope find_files<CR>", { noremap = true, silent = true })
 
 -- packer.nvim の初期化
 vim.cmd [[packadd packer.nvim]]
