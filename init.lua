@@ -16,7 +16,8 @@ vim.g.mapleader = " "  -- leader キーをスペースに設定
 local opts = { noremap = true, silent = true }
 -- 例: NvimTree（ファイルエクスプローラー）のトグル
 vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>o", ":Telescope find_files<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>p", ":Telescope find_files<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>lg", ":Telescope live_grep<CR>", { noremap = true, silent = true })
 
 -- packer.nvim の初期化
 vim.cmd [[packadd packer.nvim]]
@@ -49,6 +50,9 @@ require('packer').startup(function(use)
 
   -- ステータスライン（lualine）
   use 'hoob3rt/lualine.nvim'
+
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
 end)
 
 -- Ruby 用 LSP（Solargraph）の設定
@@ -85,6 +89,7 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
+    { name = 'luasnip' },
     { name = 'buffer' },
   })
 })
