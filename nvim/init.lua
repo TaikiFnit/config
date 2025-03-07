@@ -56,6 +56,8 @@ require('packer').startup(function(use)
   use 'saadparwaiz1/cmp_luasnip'
 
   use 'github/copilot.vim'
+
+  use 'hashivim/vim-terraform'
 end)
 
 -- Ruby 用 LSP（Solargraph）の設定
@@ -69,6 +71,9 @@ lspconfig.solargraph.setup {
       completion = true,
     }
   }
+}
+lspconfig.terraformls.setup{
+  filetypes = { "terraform", "tf", "terraform-vars" },
 }
 
 -- Treesitter 設定（Ruby含む）
@@ -119,3 +124,9 @@ require("nvim-tree").setup({
     dotfiles = true,
   },
 })
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {"terraform", "hcl"},
+  highlight = { enable = true },
+  indent = { enable = true },
+}
